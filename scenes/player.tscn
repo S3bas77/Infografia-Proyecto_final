@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj7wtx1osmjyq"]
+
+[ext_resource type="Texture2D" uid="uid://jgl2gw43sujh" path="res://assets/player/Idle_Sheet_1.png" id="1_3vyb7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
+height = 28.0
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3vyb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_g2els")
+
+[node name="Camera2D" type="Camera2D" parent="."]
