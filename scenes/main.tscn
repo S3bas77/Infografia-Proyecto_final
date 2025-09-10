@@ -332,4 +332,4 @@ tile_set = SubResource("TileSet_choun")
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
 position = Vector2(139, 143)
-move_speed = 140.0
+move_speed = 150.0
