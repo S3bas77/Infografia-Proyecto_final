@@ -41,6 +41,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [ExtResource("1_3vyb7"), ExtResource("3_ur7pv"), ExtResource("4_y4r1p"), ExtResource("5_d2wvv")]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HurtBox/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_d2wvv"]
 resource_name = "Idle_right"
@@ -97,6 +121,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [ExtResource("1_3vyb7")]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HurtBox/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_3v2ag"]
 resource_name = "Run_left"
@@ -126,6 +174,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [ExtResource("6_3v2ag"), ExtResource("7_jej6c"), ExtResource("8_f1ej7"), ExtResource("9_oprun")]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HurtBox/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_jej6c"]
 resource_name = "Run_right"
@@ -154,6 +226,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("6_3v2ag"), ExtResource("7_jej6c"), ExtResource("8_f1ej7"), ExtResource("9_oprun")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HurtBox/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fjrip"]
@@ -211,7 +307,7 @@ script = ExtResource("1_g2els")
 move_speed = 60.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, 2)
+position = Vector2(-1, 1)
 shape = SubResource("CapsuleShape2D_g2els")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -232,10 +328,10 @@ parameters/Idle/blend_position = -0.700461
 parameters/Run/blend_position = -0.951613
 
 [node name="HurtBox" type="Area2D" parent="."]
-visibility_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(3, 2)
+position = Vector2(-1, 1)
 shape = SubResource("CapsuleShape2D_ur7pv")
 debug_color = Color(0.952026, 2.88785e-06, 0.56071, 0.42)
 
