@@ -5,6 +5,13 @@ extends CharacterBody2D
 @onready var anim_state = anim_tree.get("parameters/playback")
 var is_facing_right = true
 
+var vida_max = 6
+var vida_actual = vida_max
+var escudo_max = 5
+var escudo_actual = escudo_max
+var mana_max = 180
+var mana_actual = mana_max
+
 func _ready():
 	anim_tree.active = true
 
