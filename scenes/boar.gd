@@ -1,5 +1,7 @@
 extends "res://scripts/enemy_1.gd"
 
+@export var health: int = 6 
+
 @onready var anim_tree: AnimationTree = $AnimationTree
 @onready var anim_state = null
 
@@ -29,3 +31,13 @@ func update_animations():
 	var dir = 1 if is_facing_right else -1
 	anim_tree.set("parameters/Idle/blend_position", dir)
 	anim_tree.set("parameters/Run/blend_position", dir)
+	
+func take_damage(dmg: int) -> void:
+	health -= dmg
+	print("me pegaron", dmg, "-> health:", health)
+	if health <= 0:
+		die()
+
+func die() -> void:
+	# lógica de muerte (anim, drop, etc.)
+	queue_free()
