@@ -1,23 +1,11 @@
-<<<<<<< HEAD
 [gd_scene load_steps=38 format=4 uid="uid://clkgbqkhsny3n"]
-=======
-[gd_scene load_steps=25 format=4 uid="uid://clkgbqkhsny3n"]
->>>>>>> 6fe7db4 (feat: barras de vida escudo y mana)
 
 [ext_resource type="PackedScene" uid="uid://dj7wtx1osmjyq" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://boagv67eys6ml" path="res://assets/floor/Font_theme.png" id="1_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://cnurhwxoov7w1" path="res://assets/floor/Floor.png" id="1_tefeu"]
 [ext_resource type="Texture2D" uid="uid://b7ydbhxl05c4c" path="res://assets/floor/Wall.png" id="4_85g3d"]
 [ext_resource type="Texture2D" uid="uid://b6newluws35sy" path="res://assets/floor/floor_elementos.png" id="5_choun"]
-<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://bvymlk3yebgbd" path="res://scenes/boar.tscn" id="6_tefeu"]
-=======
-[ext_resource type="Texture2D" uid="uid://k5yhjrd8kcg" path="res://assets/barra de vida/marco_de_barras.png" id="8_85g3d"]
-[ext_resource type="Script" uid="uid://bmnw62vy3qfrq" path="res://scripts/hud.gd" id="8_eb6dy"]
-[ext_resource type="Texture2D" uid="uid://c5qubftymsisb" path="res://assets/barra de vida/barra_de_vida.png" id="9_choun"]
-[ext_resource type="Texture2D" uid="uid://bu5ooa17n5qrs" path="res://assets/barra de vida/barra_de_escudo.png" id="10_ya4ey"]
-[ext_resource type="Texture2D" uid="uid://fcnhh1i736un" path="res://assets/barra de vida/barra_de_mana.png" id="11_eb6dy"]
->>>>>>> 6fe7db4 (feat: barras de vida escudo y mana)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tipki"]
 texture = ExtResource("1_o6xl0")
@@ -244,6 +232,7 @@ texture = ExtResource("4_85g3d")
 3:0/0 = 0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8.16327, -15.9315, 8.16327, -15.9315, 8, -1.71165, -8, -1.71165)
 2:1/0 = 0
 3:1/0 = 0
 0:2/0 = 0
@@ -273,81 +262,9 @@ tile_map_data = PackedByteArray("AAAkAAEAAQAAAAAAAAAkAAIAAQACAAAAAAAkAAMAAQABAAA
 tile_set = SubResource("TileSet_choun")
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
-position = Vector2(140, 143)
+position = Vector2(139, 143)
 move_speed = 150.0
 
-<<<<<<< HEAD
 [node name="boar" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_tefeu")]
 position = Vector2(64, 70)
 target = NodePath("../Player")
-=======
-[node name="HUD" type="CanvasLayer" parent="."]
-offset = Vector2(10, 10)
-transform = Transform2D(1, 0, 0, 1, 10, 10)
-script = ExtResource("8_eb6dy")
-
-[node name="Marco_de_barras" type="TextureRect" parent="HUD"]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("8_85g3d")
-
-[node name="Vida_bar" type="TextureProgressBar" parent="HUD/Marco_de_barras"]
-offset_left = 16.0
-offset_top = 5.0
-offset_right = 74.0
-offset_bottom = 12.0
-max_value = 6.0
-value = 6.0
-texture_progress = ExtResource("9_choun")
-
-[node name="Vida_label" type="Label" parent="HUD/Marco_de_barras/Vida_bar"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = -3.0
-offset_right = 45.0
-offset_bottom = 20.0
-scale = Vector2(0.5, 0.5)
-text = "6/6"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Escudo_bar" type="TextureProgressBar" parent="HUD/Marco_de_barras"]
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 74.0
-offset_bottom = 23.0
-max_value = 5.0
-value = 5.0
-texture_progress = ExtResource("10_ya4ey")
-
-[node name="Escudo_label" type="Label" parent="HUD/Marco_de_barras/Escudo_bar"]
-layout_mode = 0
-offset_left = 19.0
-offset_top = -3.0
-offset_right = 48.0
-offset_bottom = 20.0
-scale = Vector2(0.5, 0.5)
-text = "5/6"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Mana_bar" type="TextureProgressBar" parent="HUD/Marco_de_barras"]
-offset_left = 16.0
-offset_top = 26.0
-offset_right = 74.0
-offset_bottom = 33.0
-max_value = 180.0
-value = 180.0
-texture_progress = ExtResource("11_eb6dy")
-
-[node name="Mana_label" type="Label" parent="HUD/Marco_de_barras/Mana_bar"]
-layout_mode = 0
-offset_left = 11.0
-offset_top = -3.0
-offset_right = 73.0
-offset_bottom = 20.0
-scale = Vector2(0.5, 0.5)
-text = "180/180"
-horizontal_alignment = 1
-vertical_alignment = 1
->>>>>>> 6fe7db4 (feat: barras de vida escudo y mana)
