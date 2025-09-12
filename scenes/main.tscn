@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cnurhwxoov7w1" path="res://assets/floor/Floor.png" id="1_tefeu"]
 [ext_resource type="Texture2D" uid="uid://b7ydbhxl05c4c" path="res://assets/floor/Wall.png" id="4_85g3d"]
 [ext_resource type="Texture2D" uid="uid://b6newluws35sy" path="res://assets/floor/floor_elementos.png" id="5_choun"]
-[ext_resource type="PackedScene" uid="uid://bvymlk3yebgbd" path="res://scenes/boar.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" path="res://scenes/boar.tscn" id="6_tefeu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tipki"]
 texture = ExtResource("1_o6xl0")
@@ -232,7 +232,6 @@ texture = ExtResource("4_85g3d")
 3:0/0 = 0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8.16327, -15.9315, 8.16327, -15.9315, 8, -1.71165, -8, -1.71165)
 2:1/0 = 0
 3:1/0 = 0
 0:2/0 = 0
