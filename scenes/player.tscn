@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dj7wtx1osmjyq"]
+[gd_scene load_steps=34 format=3 uid="uid://dj7wtx1osmjyq"]
 
 [ext_resource type="Texture2D" uid="uid://jgl2gw43sujh" path="res://assets/player/Idle_Sheet_1.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cmfd5tsb3gqaw" path="res://scripts/player.gd" id="1_g2els"]
@@ -9,6 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://8qvs02fofs2f" path="res://assets/player/Run_Sheet_2.png" id="7_jej6c"]
 [ext_resource type="Texture2D" uid="uid://yv04wm4ehrbp" path="res://assets/player/Run_Sheet_3.png" id="8_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://cfg5syxw0eah4" path="res://assets/player/Run_Sheet_4.png" id="9_oprun"]
+[ext_resource type="Script" uid="uid://vs66rgphe4i0" path="res://scripts/gui.gd" id="10_f1ej7"]
+[ext_resource type="Texture2D" uid="uid://vwx35ofv3xkg" path="res://assets/barra_lateral/marco_de_barras.png" id="10_y4r1p"]
+[ext_resource type="Texture2D" uid="uid://bc6isjnn8w8km" path="res://assets/barra_lateral/barra_de_vida.png" id="11_jej6c"]
+[ext_resource type="Texture2D" uid="uid://bm0yngq8mwpss" path="res://assets/barra_lateral/barra_de_escudo.png" id="12_f1ej7"]
+[ext_resource type="Texture2D" uid="uid://cw04amre158km" path="res://assets/barra_lateral/barra_de_mana.png" id="13_oprun"]
+[ext_resource type="PackedScene" uid="uid://bd855t1x0jj6y" path="res://scenes/weapon.tscn" id="15_oprun"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
 height = 28.0
@@ -334,5 +340,76 @@ collision_mask = 4
 position = Vector2(-1, 1)
 shape = SubResource("CapsuleShape2D_ur7pv")
 debug_color = Color(0.952026, 2.88785e-06, 0.56071, 0.42)
+
+[node name="GUI" type="CanvasLayer" parent="."]
+script = ExtResource("10_f1ej7")
+
+[node name="Marco_barras" type="TextureRect" parent="GUI"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 89.0
+offset_bottom = 49.0
+texture = ExtResource("10_y4r1p")
+
+[node name="Vida_bar" type="TextureProgressBar" parent="GUI/Marco_barras"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 5.0
+offset_right = 74.0
+offset_bottom = 12.0
+max_value = 6.0
+value = 6.0
+texture_progress = ExtResource("11_jej6c")
+
+[node name="Vida_label" type="Label" parent="GUI/Marco_barras/Vida_bar"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = -3.0
+offset_right = 46.0
+offset_bottom = 20.0
+scale = Vector2(0.5, 0.5)
+text = "6/6"
+
+[node name="Escudo_bar" type="TextureProgressBar" parent="GUI/Marco_barras"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 15.0
+offset_right = 74.0
+offset_bottom = 22.0
+max_value = 5.0
+value = 5.0
+texture_progress = ExtResource("12_f1ej7")
+
+[node name="Escudo_label" type="Label" parent="GUI/Marco_barras/Escudo_bar"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = -3.0
+offset_right = 46.0
+offset_bottom = 20.0
+scale = Vector2(0.5, 0.5)
+text = "5/5"
+
+[node name="Marra_bar" type="TextureProgressBar" parent="GUI/Marco_barras"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 25.0
+offset_right = 74.0
+offset_bottom = 32.0
+max_value = 180.0
+value = 180.0
+texture_progress = ExtResource("13_oprun")
+
+[node name="Marra_label" type="Label" parent="GUI/Marco_barras/Marra_bar"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -3.0
+offset_right = 74.0
+offset_bottom = 20.0
+scale = Vector2(0.5, 0.5)
+text = "180/180"
+
+[node name="Weapon" parent="." instance=ExtResource("15_oprun")]
+position = Vector2(-21, 1)
+rotation = 0.306053
 
 [connection signal="area_shape_entered" from="HurtBox" to="." method="_on_hurt_box_area_shape_entered"]
