@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://co6wi07e4qat8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qkhh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umrl8"]
+
+[node name="enemy_1" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2qkhh")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_umrl8")
+debug_color = Color(0.971057, 0, 0.450545, 0.42)
