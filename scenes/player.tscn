@@ -304,6 +304,7 @@ states/Idle/position = Vector2(354.667, 154)
 states/Run/node = SubResource("AnimationNodeBlendSpace1D_f1ej7")
 states/Run/position = Vector2(608, 34)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_oprun"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_a8ls1"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_qfm1y")]
+graph_offset = Vector2(26.0401, -30.8999)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ur7pv"]
 height = 28.0
