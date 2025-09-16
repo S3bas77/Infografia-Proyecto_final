@@ -69,6 +69,7 @@ basic_attack={
 2d_physics/layer_4="enemy_hit"
 2d_physics/layer_5="enemy_hurt"
 2d_physics/layer_6="item"
+2d_physics/layer_7="enemies"
 
 [rendering]
 
