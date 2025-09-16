@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://brgwa43a608ts"]
 
-[ext_resource type="Script" uid="uid://cwr18dqte5kdq" path="res://scenes/gun.gd" id="1_x77fm"]
+[gd_scene load_steps=3 format=3 uid="uid://bw7g3ebpbc254"]
+
+[ext_resource type="Script" uid="uid://hgopghs6p5k0" path="res://scripts/gun.gd" id="1_og67c"]
+[ext_resource type="Texture2D" uid="uid://di12im7otiafy" path="res://assets/weapons/weapon_Idle.png" id="2_gp1hk"]
 
 [node name="Gun" type="Node2D"]
-script = ExtResource("1_x77fm")
+script = ExtResource("1_og67c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(6, -3)
+scale = Vector2(0.966667, 1.05556)
+texture = ExtResource("2_gp1hk")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(16, -5)

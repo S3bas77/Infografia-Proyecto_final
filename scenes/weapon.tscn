@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bd855t1x0jj6y"]
+[gd_scene load_steps=9 format=3 uid="uid://dh4fth67nwo2h"]
 
 [ext_resource type="Script" uid="uid://giu87orfvdgd" path="res://scripts/weapon.gd" id="1_8fp1k"]
 [ext_resource type="Texture2D" uid="uid://bxwpc276m2avw" path="res://assets/weapons/cuchillo_cuerpo1.png" id="2_cjr6y"]
