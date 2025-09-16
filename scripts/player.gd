@@ -122,6 +122,12 @@ func _on_shield_regen_timer_timeout():
 	else:
 		shield_regen_timer.stop()
 		
+
+#func _process(delta):
+	# Input: crea la acción "attack" en Project Settings -> Input Map (ver abajo)
+	#if Input.is_action_just_pressed("basic_attack"):
+		#weapon.attack(is_facing_right)
+
 #------------calcular enemigo --------------
 func _on_enemy_entered(body: Node):
 	print("que waso")
@@ -147,8 +153,8 @@ func pasar_direccion():
 	if current_target:
 		var dir = (current_target.global_position - global_position).normalized()
 		print(dir)
-		#weapon.set_direccion(dir)
+		$Gun.set_direccion(dir)
 	else:
 		var dir = Vector2.RIGHT if is_facing_right else Vector2.LEFT
 		print(dir)
-		#weapon.set_direccion(dir)
+		$Gun.set_direccion(dir)

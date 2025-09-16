@@ -3,9 +3,10 @@ extends Node2D
 const BULLET = preload("res://scenes/bullet.tscn")
 
 @onready var muzzle: Marker2D = $Marker2D
-
+var direcction: Vector2 = Vector2.ZERO
 func _process(delta: float) -> void:
-	look_at(get_global_mouse_position())
+	if direcction != Vector2.ZERO:
+		rotation = direcction.angle()
 	rotation_degrees = wrap(rotation_degrees, 0, 360)
 	if rotation_degrees > 90 and rotation_degrees <270:
 		scale.y = -1
@@ -21,4 +22,6 @@ func _process(delta: float) -> void:
 		bullet_instance.direction = dir
 		bullet_instance.rotation = dir.angle()   # 🔥 alinear sprite y colisión
 
+func set_direccion(dir :Vector2):
+	direcction = dir
 		
