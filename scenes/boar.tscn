@@ -203,7 +203,7 @@ states/Run/position = Vector2(526.667, 60.6667)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_f7ac1"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_bb5y3"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_lp13s")]
 
 [node name="boar" instance=ExtResource("1_tgiih")]
-collision_layer = 65
+collision_layer = 81
 script = ExtResource("2_bb5y3")
 
 [node name="HurtBox" parent="." index="2"]

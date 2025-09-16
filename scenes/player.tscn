@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bc6isjnn8w8km" path="res://assets/barra_lateral/barra_de_vida.png" id="11_jej6c"]
 [ext_resource type="Texture2D" uid="uid://bm0yngq8mwpss" path="res://assets/barra_lateral/barra_de_escudo.png" id="12_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://cw04amre158km" path="res://assets/barra_lateral/barra_de_mana.png" id="13_oprun"]
-[ext_resource type="PackedScene" uid="uid://bd855t1x0jj6y" path="res://scenes/weapon.tscn" id="15_oprun"]
+[ext_resource type="PackedScene" uid="uid://bw7g3ebpbc254" path="res://scenes/gun.tscn" id="15_oprun"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
 height = 28.0
@@ -310,7 +310,7 @@ graph_offset = Vector2(26.0401, -30.8999)
 height = 28.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oprun"]
-radius = 57.2189
+radius = 104.005
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
@@ -412,9 +412,8 @@ offset_bottom = 20.0
 scale = Vector2(0.5, 0.5)
 text = "180/180"
 
-[node name="Weapon" parent="." instance=ExtResource("15_oprun")]
-position = Vector2(-21, 1)
-rotation = 0.306053
+[node name="Gun" parent="." instance=ExtResource("15_oprun")]
+position = Vector2(0, 7)
 
 [node name="Node2D" type="Node2D" parent="."]
 

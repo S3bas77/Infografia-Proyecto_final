@@ -4,7 +4,6 @@ extends CharacterBody2D
 @onready var anim_tree = $AnimationTree
 @onready var anim_state = anim_tree.get("parameters/playback")
 @onready var hud = $GUI
-@onready var weapon = $Weapon
 var is_facing_right = true
 
 var vida_max = 6
@@ -14,7 +13,7 @@ var escudo_actual = escudo_max
 var mana_max = 180
 var mana_actual = mana_max
 
-# Timers
+# Timersd
 var shield_regen_delay: Timer
 var shield_regen_timer: Timer
 
@@ -38,8 +37,6 @@ func _ready():
 	shield_regen_timer.one_shot = false
 	add_child(shield_regen_timer)
 	shield_regen_timer.timeout.connect(_on_shield_regen_timer_timeout)
-	
-	weapon._set_facing(is_facing_right)
 
 func _physics_process(delta):
 	move()
@@ -52,7 +49,6 @@ func update_animations():
 		anim_state.travel("Run")
 	else:
 		anim_state.travel("Idle")
-	weapon._set_facing(is_facing_right)
 	# Actualizar BlendSpace1D para reflejar dirección horizontal
 	# Suponiendo que dentro de cada estado ("run" y "idle") tienes un BlendSpace1D llamado "blend_position"
 	update_facing()
@@ -126,13 +122,11 @@ func _on_shield_regen_timer_timeout():
 	else:
 		shield_regen_timer.stop()
 		
-func _process(delta):
+
+#func _process(delta):
 	# Input: crea la acción "attack" en Project Settings -> Input Map (ver abajo)
-	if Input.is_action_just_pressed("basic_attack"):
-		weapon.attack(is_facing_right)
-
-
-
+	#if Input.is_action_just_pressed("basic_attack"):
+		#weapon.attack(is_facing_right)
 
 #------------calcular enemigo --------------
 func _on_enemy_entered(body: Node):
@@ -159,8 +153,8 @@ func pasar_direccion():
 	if current_target:
 		var dir = (current_target.global_position - global_position).normalized()
 		print(dir)
-		#weapon.set_direccion(dir)
+		$Gun.set_direccion(dir)
 	else:
 		var dir = Vector2.RIGHT if is_facing_right else Vector2.LEFT
 		print(dir)
-		#weapon.set_direccion(dir)
+		$Gun.set_direccion(dir)
