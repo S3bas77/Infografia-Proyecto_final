@@ -4,7 +4,6 @@ extends CharacterBody2D
 @onready var anim_tree = $AnimationTree
 @onready var anim_state = anim_tree.get("parameters/playback")
 @onready var hud = $GUI
-@onready var weapon = $Weapon
 var is_facing_right = true
 
 var vida_max = 6
@@ -14,7 +13,7 @@ var escudo_actual = escudo_max
 var mana_max = 180
 var mana_actual = mana_max
 
-# Timers
+# Timersd
 var shield_regen_delay: Timer
 var shield_regen_timer: Timer
 
@@ -123,14 +122,6 @@ func _on_shield_regen_timer_timeout():
 	else:
 		shield_regen_timer.stop()
 		
-func _process(delta):
-	# Input: crea la acción "attack" en Project Settings -> Input Map (ver abajo)
-	if Input.is_action_just_pressed("basic_attack"):
-		weapon.attack(is_facing_right)
-
-
-
-
 #------------calcular enemigo --------------
 func _on_enemy_entered(body: Node):
 	print("que waso")
