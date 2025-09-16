@@ -265,5 +265,11 @@ position = Vector2(139, 143)
 move_speed = 150.0
 
 [node name="boar" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_tefeu")]
-position = Vector2(64, 70)
+position = Vector2(225, 154)
 target = NodePath("../Player")
+max_speed = 5
+
+[node name="boar2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_tefeu")]
+position = Vector2(50, 157)
+target = NodePath("../Player")
+max_speed = 5
