@@ -35,8 +35,6 @@ func _ready():
 	shield_regen_timer.one_shot = false
 	add_child(shield_regen_timer)
 	shield_regen_timer.timeout.connect(_on_shield_regen_timer_timeout)
-	
-	weapon._set_facing(is_facing_right)
 
 func _physics_process(delta):
 	move()
@@ -49,7 +47,6 @@ func update_animations():
 		anim_state.travel("Run")
 	else:
 		anim_state.travel("Idle")
-	weapon._set_facing(is_facing_right)
 	# Actualizar BlendSpace1D para reflejar dirección horizontal
 	# Suponiendo que dentro de cada estado ("run" y "idle") tienes un BlendSpace1D llamado "blend_position"
 	if velocity.x>0:
@@ -111,7 +108,3 @@ func _on_shield_regen_timer_timeout():
 	else:
 		shield_regen_timer.stop()
 		
-func _process(delta):
-	# Input: crea la acción "attack" en Project Settings -> Input Map (ver abajo)
-	if Input.is_action_just_pressed("basic_attack"):
-		weapon.attack(is_facing_right)
