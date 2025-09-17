@@ -160,7 +160,7 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_2sv0d")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Run/blend_position = 0.49049
+parameters/Run/blend_position = 0.0298402
 
 [node name="Encontrar_Player" type="Area2D" parent="."]
 collision_layer = 0

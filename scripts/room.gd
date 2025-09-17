@@ -4,7 +4,8 @@ extends Node2D
 @onready var spawn_points = $EnemiesSpawn.get_children()
 @onready var doors = $Doors
 var player: CharacterBody2D = null
-var enemy_scene = preload("res://scenes/boar.tscn")
+var boar_scene = preload("res://scenes/boar.tscn")
+var goblin_scene = preload("res://scenes/goblin1.tscn")  
 var enemies_alive: int = 0
 var current_round: int = 0
 var max_rounds: int = 3
@@ -34,13 +35,22 @@ func spawn_enemies(amount: int) -> void:
 		if player == null:
 			push_error("⚠ No encontré al Player en el grupo 'Player'")
 			return
+
 		for i in range(amount):
+			var enemy_scene: PackedScene
+			if randf() < 0.75:
+				enemy_scene = goblin_scene
+			else:
+				enemy_scene = boar_scene
+
 			var enemy = enemy_scene.instantiate()
-			enemy.target = player
+			enemy.set_player(player)
 			get_parent().add_child(enemy)
+
 			var rand_x = randf_range(-rect_size.x, rect_size.x)
 			var rand_y = randf_range(-rect_size.y, rect_size.y)
 			enemy.global_position = rect_center + Vector2(rand_x, rand_y)
+
 			enemies_alive += 1
 			enemy.tree_exited.connect(_on_enemy_dead)
 
