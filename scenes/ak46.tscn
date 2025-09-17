@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://brkgq4w2ftjwq"]
+
+[ext_resource type="PackedScene" uid="uid://bw7g3ebpbc254" path="res://scenes/gun.tscn" id="1_64f5o"]
+[ext_resource type="PackedScene" uid="uid://bsp4rnqakhg8g" path="res://scenes/bala_ak_47.tscn" id="2_bvpp3"]
+[ext_resource type="Texture2D" uid="uid://d23xm4d3ptn5l" path="res://assets/weapons/Sprite_AK47_Gold.webp" id="3_6rkgu"]
+
+[node name="ak47" instance=ExtResource("1_64f5o")]
+bullet_scene = ExtResource("2_bvpp3")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(1, 0)
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(4.76837e-07, -1.19209e-07)
+scale = Vector2(0.138803, 0.14328)
+texture = ExtResource("3_6rkgu")
+
+[node name="Marker2D" parent="." index="2"]
+position = Vector2(16, 0)

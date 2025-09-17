@@ -21,6 +21,12 @@ var shield_regen_timer: Timer
 var current_target: Node2D = null
 var enemies_list: Array[Node2D] = []
 
+#objetos
+var is_in_range: bool = false
+var target_object: Gun = null
+var current_weapon: Gun = null
+@onready var hand_position: Marker2D = $HandPosition
+
 func _ready():
 	anim_tree.active = true
 	hud.set_vida(vida_actual, vida_max)
@@ -39,9 +45,11 @@ func _ready():
 	add_child(shield_regen_timer)
 	shield_regen_timer.timeout.connect(_on_shield_regen_timer_timeout)
 
-	$Gun.set_duenio("player")
+	if current_weapon:
+		current_weapon.set_duenio("player")
 
 func _physics_process(delta):
+	pickup_object()
 	move()
 	update_animations()
 	move_and_slide()
@@ -128,8 +136,8 @@ func _on_shield_regen_timer_timeout():
 
 func _process(delta):
 	# Input: crea la acción "attack" en Project Settings -> Input Map (ver abajo)
-	if Input.is_action_just_pressed("basic_attack"):
-		$Gun.attack()
+	if Input.is_action_just_pressed("basic_attack") and current_weapon:
+		current_weapon.attack()
 
 #------------calcular enemigo --------------
 func _on_enemy_entered(body: Node):
@@ -154,9 +162,57 @@ func pasar_direccion():
 	if current_target:
 		var dir = (current_target.global_position - global_position).normalized()
 		#print(dir)
-		$Gun.set_direccion(dir)
+		if current_weapon:
+			current_weapon.set_direccion(dir)
 	else:
 		var dir = Vector2.RIGHT if is_facing_right else Vector2.LEFT
 		#print(dir)
-		$Gun.set_direccion(dir)
+		if current_weapon:
+			current_weapon.set_direccion(dir)
 #---------pasar mask------#
+
+func pickup_object():
+	if is_in_range and Input.is_action_just_pressed("pickup") and target_object:
+		var picked_weapon = target_object   # guardar referencia local
+		target_object = null                # limpiar inmediatamente
+		is_in_range = false
+
+		# --- Si ya hay un arma equipada → soltarla ---
+		if current_weapon and is_instance_valid(current_weapon):
+			var old_weapon = current_weapon
+			hand_position.remove_child(old_weapon)
+			get_parent().add_child(old_weapon)  # soltar al mismo nivel que el jugador
+
+			# Colocamos el arma cerca del jugador (a la derecha o izquierda)
+			var drop_offset = Vector2(20, 0) if is_facing_right else Vector2(-20, 0)
+			old_weapon.global_position = global_position + drop_offset
+
+			old_weapon.set_duenio("")  # ya no pertenece al jugador
+			print("Arma anterior soltada")
+
+		# --- Equipar el arma recogida ---
+		if picked_weapon and is_instance_valid(picked_weapon):
+			if picked_weapon.get_parent():
+				picked_weapon.get_parent().remove_child(picked_weapon)
+			hand_position.add_child(picked_weapon)
+			picked_weapon.position = Vector2.ZERO
+
+			# Actualizar referencia
+			current_weapon = picked_weapon
+			current_weapon.set_duenio("player")
+
+			print("Nueva arma equipada!")
+
+
+func _on_buscar_objetos_area_exited(area: Area2D) -> void:
+	print("Arma fuera de rango")
+	if area is Gun:
+		is_in_range = false
+		target_object = null
+
+
+func _on_buscar_objetos_area_entered(area: Area2D) -> void:
+	print("Arma en rango")
+	if area is Gun:
+		is_in_range = true
+		target_object = area

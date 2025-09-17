@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dgrlx0435gwhy" path="res://scenes/Room2.tscn" id="10_choun"]
 [ext_resource type="PackedScene" uid="uid://chygldge7evyt" path="res://scenes/Room3.tscn" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://dt0c8lfcamcng" path="res://scenes/Room4.tscn" id="12_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://brkgq4w2ftjwq" path="res://scenes/ak46.tscn" id="13_ak47"]
+[ext_resource type="PackedScene" uid="uid://bw7g3ebpbc254" path="res://scenes/gun.tscn" id="14_gun"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tipki"]
 texture = ExtResource("1_o6xl0")
@@ -287,6 +289,7 @@ position = Vector2(601, 47)
 [node name="goblin1" parent="." instance=ExtResource("8_tipki")]
 position = Vector2(235, 40)
 
+
 [node name="JefeFinal" parent="." instance=ExtResource("9_85g3d")]
 position = Vector2(1831, -942)
 
@@ -310,3 +313,16 @@ position = Vector2(1089, -551)
 
 [node name="Room7" parent="." instance=ExtResource("12_eb6dy")]
 position = Vector2(16, -1154)
+
+[node name="ametralladora" parent="." instance=ExtResource("13_ak47")]
+visibility_layer = 1
+position = Vector2(177, 225)
+collision_layer = 16384
+
+[node name="Gun" parent="." instance=ExtResource("14_gun")]
+position = Vector2(67, 229)
+collision_layer = 16384
+
+[node name="ametralladora2" parent="." instance=ExtResource("13_ak47")]
+position = Vector2(69, 89)
+collision_layer = 16384

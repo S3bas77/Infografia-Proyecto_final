@@ -1,10 +1,16 @@
-extends Node2D
+extends Area2D
+class_name Gun
 
 @export var bullet_scene: PackedScene  
-
 @onready var muzzle: Marker2D = $Marker2D
 var direcction: Vector2 = Vector2.ZERO
 var duenio: String = ""
+
+@onready var sprite: Sprite2D = $Sprite2D
+
+func _ready():
+	monitoring = true   # Para que otros Area2D puedan detectarlo
+	
 func _process(delta: float) -> void:
 	if direcction != Vector2.ZERO:
 		rotation = direcction.angle()
