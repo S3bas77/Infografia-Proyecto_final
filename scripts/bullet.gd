@@ -6,10 +6,9 @@ extends Area2D
 
 var direction: Vector2 = Vector2.RIGHT
 var lifetime_timer: Timer
-
+var duenio  = ""
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
-
 	# Crear el Timer por código
 	lifetime_timer = Timer.new()
 	lifetime_timer.wait_time = lifetime
@@ -33,3 +32,9 @@ func _on_body_entered(body: Node) -> void:
 
 func _on_lifetime_timeout() -> void:
 	queue_free()
+
+func asignar_duenio(s:String):
+	if(s == "player"):
+		collision_mask |= 1 << 4
+	elif(s == "enemigo"):
+		collision_mask |= 1 << 2

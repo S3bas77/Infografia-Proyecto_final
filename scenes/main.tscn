@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://clkgbqkhsny3n"]
+[gd_scene load_steps=40 format=4 uid="uid://clkgbqkhsny3n"]
 
 [ext_resource type="PackedScene" uid="uid://dj7wtx1osmjyq" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://boagv67eys6ml" path="res://assets/floor/Font_theme.png" id="1_o6xl0"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://b7ydbhxl05c4c" path="res://assets/floor/Wall.png" id="4_85g3d"]
 [ext_resource type="Texture2D" uid="uid://b6newluws35sy" path="res://assets/floor/floor_elementos.png" id="5_choun"]
 [ext_resource type="PackedScene" uid="uid://bvymlk3yebgbd" path="res://scenes/boar.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://b1q57e5hai2t" path="res://scenes/Room.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://cr3yv7yphrbt2" path="res://scenes/goblin1.tscn" id="8_tipki"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tipki"]
 texture = ExtResource("1_o6xl0")
@@ -266,7 +268,7 @@ position = Vector2(139, 143)
 move_speed = 150.0
 
 [node name="boar" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_tefeu")]
-position = Vector2(225, 154)
+position = Vector2(224, 154)
 target = NodePath("../Player")
 max_speed = 5
 
@@ -274,3 +276,9 @@ max_speed = 5
 position = Vector2(50, 157)
 target = NodePath("../Player")
 max_speed = 5
+
+[node name="Room" parent="." groups=["player"] instance=ExtResource("7_o6xl0")]
+position = Vector2(593, 27)
+
+[node name="goblin1" parent="." instance=ExtResource("8_tipki")]
+position = Vector2(235, 40)

@@ -19,6 +19,7 @@ var shield_regen_timer: Timer
 
 #enemigo
 var current_target: Node2D = null
+var enemies_list: Array[Node2D] = []
 
 func _ready():
 	anim_tree.active = true
@@ -37,6 +38,8 @@ func _ready():
 	shield_regen_timer.one_shot = false
 	add_child(shield_regen_timer)
 	shield_regen_timer.timeout.connect(_on_shield_regen_timer_timeout)
+
+	$Gun.set_duenio("player")
 
 func _physics_process(delta):
 	move()
@@ -123,38 +126,37 @@ func _on_shield_regen_timer_timeout():
 		shield_regen_timer.stop()
 		
 
-#func _process(delta):
+func _process(delta):
 	# Input: crea la acción "attack" en Project Settings -> Input Map (ver abajo)
-	#if Input.is_action_just_pressed("basic_attack"):
-		#weapon.attack(is_facing_right)
+	if Input.is_action_just_pressed("basic_attack"):
+		$Gun.attack()
 
 #------------calcular enemigo --------------
 func _on_enemy_entered(body: Node):
-	print("que waso")
+	print("enemigo entró")
 	if current_target == null:
 		current_target = body
-	#if body.is_in_group("enemies"):
-		#print("boar in")
+	else:
+		enemies_list.append(body)
 
 func _on_enemy_exited(body: Node):
-	print("que wason't")
+	print("enemigo salió")
 	if body == current_target:
-		current_target = null
-		# Buscar si queda otro enemigo en el área
-		var bodies = $BuscarEnemigos.get_overlapping_bodies()
-		if bodies!=null:
-			for b in bodies:
-				current_target = b
-				break
-			#if b.is_in_group("enemies"):
+		if enemies_list.size() > 0:
+			current_target = enemies_list.pop_front()
+		else:
+			current_target = null
+	else:
+		enemies_list.erase(body)
 
 #-------direccion-------------
 func pasar_direccion():
 	if current_target:
 		var dir = (current_target.global_position - global_position).normalized()
-		print(dir)
+		#print(dir)
 		$Gun.set_direccion(dir)
 	else:
 		var dir = Vector2.RIGHT if is_facing_right else Vector2.LEFT
-		print(dir)
+		#print(dir)
 		$Gun.set_direccion(dir)
+#---------pasar mask------#
