@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm7uqxm2yo53o"]
+
+[ext_resource type="PackedScene" uid="uid://7vphg3hab66t" path="res://scenes/bullet.tscn" id="1_qddq2"]
+[ext_resource type="Texture2D" uid="uid://dessdqk75gq4s" path="res://assets/weapons/fireball.png" id="2_une7w"]
+
+[node name="fireBall" instance=ExtResource("1_qddq2")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(-1.66893e-06, -0.5)
+scale = Vector2(0.5, 0.328125)
+texture = ExtResource("2_une7w")
