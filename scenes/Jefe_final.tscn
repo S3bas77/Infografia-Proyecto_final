@@ -1,0 +1,174 @@
+[gd_scene load_steps=15 format=3 uid="uid://bxwau1xxs4ld1"]
+
+[ext_resource type="Script" uid="uid://cug64psvhnycy" path="res://scripts/jefe_final.gd" id="1_b8g6v"]
+[ext_resource type="PackedScene" uid="uid://ct24wall08mhn" path="res://scenes/fuego_bullet.tscn" id="2_vfvgx"]
+[ext_resource type="Texture2D" uid="uid://y2qmbvnidb5o" path="res://assets/enemies/magmita/Run_Sheet-magma.png" id="3_2sv0d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jhv3"]
+size = Vector2(42, 38)
+
+[sub_resource type="Animation" id="Animation_2sv0d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_luoka"]
+resource_name = "Run_left"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_vfvgx"]
+resource_name = "Run_right"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.433333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vfvgx"]
+_data = {
+&"RESET": SubResource("Animation_2sv0d"),
+&"Run_left": SubResource("Animation_luoka"),
+&"Run_right": SubResource("Animation_vfvgx")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vfvgx"]
+animation = &"Run_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2sv0d"]
+animation = &"Run_right"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_luoka"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_vfvgx")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_2sv0d")
+blend_point_1/pos = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vfvgx"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2sv0d"]
+states/Run/node = SubResource("AnimationNodeBlendSpace1D_luoka")
+states/Run/position = Vector2(361.333, 134)
+transitions = ["Start", "Run", SubResource("AnimationNodeStateMachineTransition_vfvgx")]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vfvgx"]
+size = Vector2(246.389, 222.781)
+
+[node name="JefeFinal" type="CharacterBody2D"]
+collision_layer = 81
+collision_mask = 17
+script = ExtResource("1_b8g6v")
+bullet_scene = ExtResource("2_vfvgx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 24)
+shape = SubResource("RectangleShape2D_3jhv3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5, -9)
+scale = Vector2(3.375, 3.375)
+texture = ExtResource("3_2sv0d")
+flip_h = true
+hframes = 5
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vfvgx")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_2sv0d")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Run/blend_position = 0.0298402
+
+[node name="Encontrar_Player" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Encontrar_Player"]
+position = Vector2(1, 3)
+shape = SubResource("RectangleShape2D_vfvgx")
+debug_color = Color(0.643197, 0.523295, 0, 0.42)
+
+[connection signal="body_entered" from="Encontrar_Player" to="." method="_on_encontrar_player_body_entered"]
