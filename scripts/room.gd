@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var area_trigger = $Area2D
 @onready var spawn_points = $EnemiesSpawn.get_children()
-@onready var doors = $Doors
+@onready var doors: Array[Node2D] = []
 var player: CharacterBody2D = null
 var boar_scene = preload("res://scenes/boar.tscn")
 var goblin_scene = preload("res://scenes/goblin1.tscn")  
@@ -10,6 +10,7 @@ var enemies_alive: int = 0
 var current_round: int = 0
 var max_rounds: int = 3
 var enemies_per_round: int = 3
+var round :bool  = false
 #func _ready() -> void:
 	#area_trigger.body_entered.connect(_on_body_entered)
 
@@ -17,15 +18,16 @@ func start_round() -> void:
 	if current_round < max_rounds:
 		current_round += 1
 		print("Iniciando ronda ", current_round)
+		close_doors() 
 		spawn_enemies(enemies_per_round)
 	else:
 		print("Ya se completaron todas las rondas")
-		#open_doors()
+		open_doors()
 
 func _on_body_entered(body: Node) -> void:
 	print("suerteeee")
 	player = body
-	start_round()
+	
 
 func spawn_enemies(amount: int) -> void:
 	var collision_shape = area_trigger.get_node("CollisionShape2D")
@@ -57,16 +59,27 @@ func spawn_enemies(amount: int) -> void:
 func _on_enemy_dead() -> void:
 	enemies_alive -= 1
 	if enemies_alive <= 0:
-		start_round()
-
+		if current_round < max_rounds:
+			start_round()
+		else:
+			open_doors()
 func close_doors() -> void:
-	for door in doors.get_children():
-		door.visible = true
-		if door.has_node("CollisionShape2D"):
-			door.get_node("CollisionShape2D").disabled = false
+	for door in doors:
+		door.cerrar_puerta()
 
 func open_doors() -> void:
-	for door in doors.get_children():
-		door.visible = false
-		if door.has_node("CollisionShape2D"):
-			door.get_node("CollisionShape2D").disabled = true
+	for door in doors:
+		door.abrir_puerta()
+
+
+func _on_buscar_puertas_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+		doors.append(area)
+		area.abrir_puerta()
+		print("Puerta detectada: ", area.name)
+	
+
+
+func _on_area_2d_2_body_entered(body: Node2D) -> void:
+	if not round:
+		round = true
+		start_round()
