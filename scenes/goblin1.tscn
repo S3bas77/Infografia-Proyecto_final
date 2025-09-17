@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://cr3yv7yphrbt2"]
 
-[ext_resource type="Script" uid="uid://blfp484edxytt" path="res://scenes/goblin_1.gd" id="1_jrnq2"]
+[ext_resource type="Script" uid="uid://blfp484edxytt" path="res://scripts/goblin_1.gd" id="1_jrnq2"]
 [ext_resource type="Texture2D" uid="uid://xgry7aqrdyth" path="res://assets/enemies/goblin1/Run-Sheet-gob1.png" id="1_qkgr6"]
 [ext_resource type="PackedScene" uid="uid://bw7g3ebpbc254" path="res://scenes/gun.tscn" id="3_xcbuw"]
 

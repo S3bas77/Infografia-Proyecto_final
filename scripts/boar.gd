@@ -41,3 +41,8 @@ func take_damage(dmg: int) -> void:
 func die() -> void:
 	# lógica de muerte (anim, drop, etc.)
 	queue_free()
+	
+#------------------set player--------------"
+func set_player(player:CharacterBody2D):
+	target = player
+

@@ -3,31 +3,28 @@ extends CharacterBody2D
 @export var move_speed: float = 100.0
 @export var vida_max: int = 6
 @export var escudo_max: int = 5
-
+@export var bullet_scene: PackedScene
+@export var attack_cooldown: float = 3.0
+@export var radial_bullets: int = 12
+@export var directed_bullets: int = 5
+@export var bullet_speed: float = 300.0
 @onready var anim_tree: AnimationTree = $AnimationTree
 @onready var anim_state = anim_tree.get("parameters/playback")
+
+var current_target: Node2D
+var attack_timer: Timer
+var attack_index: int = 0 
 
 var vida_actual: int
 var escudo_actual: int
 var is_facing_right: bool = true
-var current_target: Node2D = null
+func _ready() -> void:
 
-var attack_timer: Timer
-func _ready():
-	vida_actual = vida_max
-	escudo_actual = escudo_max
-
-	anim_tree.active = true
-
-	# Timer para ataques automáticos
 	attack_timer = Timer.new()
-	attack_timer.wait_time = 0.5
+	attack_timer.wait_time = attack_cooldown
 	attack_timer.autostart = true
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 	add_child(attack_timer)
-	$Gun.set_duenio("enemigo")
-
-
 
 func _physics_process(delta: float) -> void:
 	move()
@@ -55,15 +52,11 @@ func move() -> void:
 
 # ---------------- ANIMACIONES ----------------
 func update_animations() -> void:
-	if velocity.length() > 0:
-		anim_state.travel("Run")
-	else:
-		anim_state.travel("Idle")
-
+	anim_state.travel("Run")
+	
 	update_facing()
 	var dir = 1 if is_facing_right else -1
 	anim_tree.set("parameters/Idle/blend_position", dir)
-	anim_tree.set("parameters/Run/blend_position", dir)
 
 
 func update_facing() -> void:
@@ -75,41 +68,44 @@ func update_facing() -> void:
 		elif velocity.x < 0:
 			is_facing_right = false
 
-
-# ---------------- ATAQUE ----------------
+# Alternar ataques
 func _on_attack_timer_timeout() -> void:
-	if current_target:
-		var dir = (current_target.global_position - global_position).normalized()
-		$Gun.set_direccion(dir)
-		$Gun.attack()
-
-
-# ---------------- DAÑO ----------------
-func take_damage(cantidad: int) -> void:
-	if escudo_actual > 0:
-		escudo_actual -= cantidad
-		if escudo_actual < 0:
-			vida_actual += escudo_actual 
-			escudo_actual = 0
+	if attack_index == 0:
+		shoot_radial()
+		attack_index = 1
 	else:
-		vida_actual -= cantidad
-
-	vida_actual = max(vida_actual, 0)
-	escudo_actual = max(escudo_actual, 0)
-
-	if vida_actual == 0:
-		die()
+		shoot_directed()
+		attack_index = 0
 
 
-func die() -> void:
-	queue_free()
+# ------------------ ATAQUES ------------------
 
-#-------------encontrar al player ---------#
-func _on_buscar_player_body_entered(body: Node2D) -> void:
+# Dispara balas en todas direcciones
+func shoot_radial() -> void:
+	for i in range(radial_bullets):
+		var angle = (TAU / radial_bullets) * i
+		var dir = Vector2.RIGHT.rotated(angle)
+		spawn_bullet(dir)
+
+# Dispara varias balas hacia el Player
+func shoot_directed() -> void:
+	if not current_target:
+		return
+	var dir_to_player = (current_target.global_position - global_position).normalized()
+	for i in range(directed_bullets):
+		spawn_bullet(dir_to_player)
+
+
+# ------------------ CREAR BULLET ------------------
+func spawn_bullet(dir: Vector2) -> void:
+	var bullet = bullet_scene.instantiate()
+	bullet.global_position = global_position
+	bullet.direction = dir
+	bullet.speed = bullet_speed
+	bullet.asignar_duenio("enemigo")
+	get_parent().add_child(bullet)
+
+
+func _on_encontrar_player_body_entered(body: Node2D) -> void:
 	if current_target == null:
 		current_target = body
-
-
-func _on_buscar_player_body_exited(body: Node2D) -> void:
-	if body == current_target:
-		current_target = null
