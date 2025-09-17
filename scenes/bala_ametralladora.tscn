@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2rbk6t7iq7vn"]
+
+[ext_resource type="PackedScene" uid="uid://7vphg3hab66t" path="res://scenes/bullet.tscn" id="1_lom7h"]
+[ext_resource type="Texture2D" uid="uid://n13ijxo1hdrv" path="res://assets/weapons/Sprite_Electric_Ninja_Stars.webp" id="2_cnarq"]
+
+[node name="bala_ametralladora" instance=ExtResource("1_lom7h")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(2, 0)
+scale = Vector2(0.238391, 0.232381)
+texture = ExtResource("2_cnarq")

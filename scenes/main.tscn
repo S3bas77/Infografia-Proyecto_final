@@ -1,4 +1,6 @@
-[gd_scene load_steps=44 format=4 uid="uid://clkgbqkhsny3n"]
+
+[gd_scene load_steps=45 format=4 uid="uid://clkgbqkhsny3n"]
+
 
 [ext_resource type="PackedScene" uid="uid://dj7wtx1osmjyq" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://boagv67eys6ml" path="res://assets/floor/Font_theme.png" id="1_o6xl0"]
@@ -12,6 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://dgrlx0435gwhy" path="res://scenes/Room2.tscn" id="10_choun"]
 [ext_resource type="PackedScene" uid="uid://chygldge7evyt" path="res://scenes/Room3.tscn" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://dt0c8lfcamcng" path="res://scenes/Room4.tscn" id="12_eb6dy"]
+[ext_resource type="PackedScene" path="res://scenes/ak46.tscn" id="13_ak46"]
+[ext_resource type="PackedScene" uid="uid://bw7g3ebpbc254" path="res://scenes/gun.tscn" id="14_gun"]
+[ext_resource type="PackedScene" uid="uid://cej3d6d2r78o5" path="res://scenes/hoak.tscn" id="15_hoak"]
+[ext_resource type="PackedScene" uid="uid://cxea5dtx1m8na" path="res://scenes/machine_gun.tscn" id="16_machine_gun"]
+[ext_resource type="PackedScene" uid="uid://c8s4fkp8s0u8j" path="res://scenes/magma_gun.tscn" id="17_magma_gun"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tipki"]
 texture = ExtResource("1_o6xl0")
@@ -310,3 +317,25 @@ position = Vector2(1089, -551)
 
 [node name="Room7" parent="." instance=ExtResource("12_eb6dy")]
 position = Vector2(16, -1154)
+
+[node name="ametralladora" parent="." instance=ExtResource("13_ak46")]
+visibility_layer = 1
+position = Vector2(177, 225)
+collision_layer = 16384
+
+[node name="Gun" parent="." instance=ExtResource("14_gun")]
+position = Vector2(67, 229)
+collision_layer = 16384
+
+[node name="ametralladora2" parent="." instance=ExtResource("13_ak46")]
+position = Vector2(69, 89)
+collision_layer = 16384
+
+[node name="hoak" parent="." instance=ExtResource("15_hoak")]
+position = Vector2(148, 111)
+
+[node name="machine_gun" parent="." instance=ExtResource("16_machine_gun")]
+position = Vector2(96, 50)
+
+[node name="magma_gun" parent="." instance=ExtResource("17_magma_gun")]
+position = Vector2(52, 197)

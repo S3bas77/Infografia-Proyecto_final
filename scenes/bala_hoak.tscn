@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cha5vmqcoet1l"]
+
+[ext_resource type="PackedScene" uid="uid://7vphg3hab66t" path="res://scenes/bullet.tscn" id="1_8wpc7"]
+[ext_resource type="Texture2D" uid="uid://c5glx36rot4ll" path="res://assets/weapons/Dragon_Slayer_downward_slash.webp" id="2_btfws"]
+
+[node name="bala_hoak" instance=ExtResource("1_8wpc7")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(-1, 7.15256e-07)
+scale = Vector2(0.0366955, 0.0959596)
+texture = ExtResource("2_btfws")

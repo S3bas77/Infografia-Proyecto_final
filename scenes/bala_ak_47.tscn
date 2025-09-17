@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsp4rnqakhg8g"]
+
+[ext_resource type="PackedScene" uid="uid://7vphg3hab66t" path="res://scenes/bullet.tscn" id="1_2w3gi"]
+[ext_resource type="Texture2D" uid="uid://bc6isjnn8w8km" path="res://assets/barra_lateral/barra_de_vida.png" id="2_60myv"]
+
+[node name="bala_ak47" instance=ExtResource("1_2w3gi")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(-2.38419e-07, -2.98023e-08)
+scale = Vector2(0.206897, 0.857143)
+texture = ExtResource("2_60myv")

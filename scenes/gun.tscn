@@ -1,12 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://bw7g3ebpbc254"]
+[gd_scene load_steps=5 format=3 uid="uid://bw7g3ebpbc254"]
 
 [ext_resource type="Script" uid="uid://hgopghs6p5k0" path="res://scripts/gun.gd" id="1_og67c"]
 [ext_resource type="Texture2D" uid="uid://di12im7otiafy" path="res://assets/weapons/weapon_Idle.png" id="2_gp1hk"]
 [ext_resource type="PackedScene" uid="uid://7vphg3hab66t" path="res://scenes/bullet.tscn" id="2_qd4js"]
 
-[node name="Gun" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gp1hk"]
+radius = 13.0
+height = 52.0
+
+[node name="Gun" type="Area2D"]
+visibility_layer = 16384
 script = ExtResource("1_og67c")
 bullet_scene = ExtResource("2_qd4js")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, -3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_gp1hk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(6, -3)
