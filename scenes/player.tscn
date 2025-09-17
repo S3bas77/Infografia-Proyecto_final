@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://bc6isjnn8w8km" path="res://assets/barra_lateral/barra_de_vida.png" id="11_jej6c"]
 [ext_resource type="Texture2D" uid="uid://bm0yngq8mwpss" path="res://assets/barra_lateral/barra_de_escudo.png" id="12_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://cw04amre158km" path="res://assets/barra_lateral/barra_de_mana.png" id="13_oprun"]
-[ext_resource type="PackedScene" uid="uid://bw7g3ebpbc254" path="res://scenes/gun.tscn" id="15_oprun"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
 height = 28.0
@@ -312,6 +311,9 @@ height = 28.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_oprun"]
 radius = 104.005
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8ls1"]
+radius = 38.0526
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 261
 script = ExtResource("1_g2els")
@@ -413,9 +415,6 @@ offset_bottom = 20.0
 scale = Vector2(0.5, 0.5)
 text = "180/180"
 
-[node name="Gun" parent="." instance=ExtResource("15_oprun")]
-position = Vector2(0, 7)
-
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="BuscarEnemigos" type="Area2D" parent="."]
@@ -426,6 +425,18 @@ collision_mask = 64
 shape = SubResource("CircleShape2D_oprun")
 debug_color = Color(0.668519, 0.510125, 0, 0.42)
 
+[node name="BuscarObjetos" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuscarObjetos"]
+shape = SubResource("CircleShape2D_a8ls1")
+
+[node name="HandPosition" type="Marker2D" parent="."]
+position = Vector2(0, 7)
+
 [connection signal="area_shape_entered" from="HurtBox" to="." method="_on_hurt_box_area_shape_entered"]
 [connection signal="body_entered" from="BuscarEnemigos" to="." method="_on_enemy_entered"]
 [connection signal="body_exited" from="BuscarEnemigos" to="." method="_on_enemy_exited"]
+[connection signal="area_entered" from="BuscarObjetos" to="." method="_on_buscar_objetos_area_entered"]
+[connection signal="area_exited" from="BuscarObjetos" to="." method="_on_buscar_objetos_area_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://clkgbqkhsny3n"]
+[gd_scene load_steps=42 format=4 uid="uid://clkgbqkhsny3n"]
 
 [ext_resource type="PackedScene" uid="uid://dj7wtx1osmjyq" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://boagv67eys6ml" path="res://assets/floor/Font_theme.png" id="1_o6xl0"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bvymlk3yebgbd" path="res://scenes/boar.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://b1q57e5hai2t" path="res://scenes/Room.tscn" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://cr3yv7yphrbt2" path="res://scenes/goblin1.tscn" id="8_tipki"]
+[ext_resource type="PackedScene" uid="uid://brkgq4w2ftjwq" path="res://scenes/ak46.tscn" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://bw7g3ebpbc254" path="res://scenes/gun.tscn" id="10_choun"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tipki"]
 texture = ExtResource("1_o6xl0")
@@ -282,3 +284,16 @@ position = Vector2(593, 27)
 
 [node name="goblin1" parent="." instance=ExtResource("8_tipki")]
 position = Vector2(235, 40)
+
+[node name="ametralladora" parent="." instance=ExtResource("9_85g3d")]
+visibility_layer = 1
+position = Vector2(177, 225)
+collision_layer = 16384
+
+[node name="Gun" parent="." instance=ExtResource("10_choun")]
+position = Vector2(67, 229)
+collision_layer = 16384
+
+[node name="ametralladora2" parent="." instance=ExtResource("9_85g3d")]
+position = Vector2(69, 89)
+collision_layer = 16384

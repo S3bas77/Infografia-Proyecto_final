@@ -1,4 +1,5 @@
 extends Area2D
+class_name Ametralladora
 
 @export var speed: float = 300
 @export var damage: int = 1
