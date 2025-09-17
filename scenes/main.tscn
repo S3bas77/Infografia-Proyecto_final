@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://clkgbqkhsny3n"]
+[gd_scene load_steps=44 format=4 uid="uid://clkgbqkhsny3n"]
 
 [ext_resource type="PackedScene" uid="uid://dj7wtx1osmjyq" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://boagv67eys6ml" path="res://assets/floor/Font_theme.png" id="1_o6xl0"]
@@ -6,9 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://b7ydbhxl05c4c" path="res://assets/floor/Wall.png" id="4_85g3d"]
 [ext_resource type="Texture2D" uid="uid://b6newluws35sy" path="res://assets/floor/floor_elementos.png" id="5_choun"]
 [ext_resource type="PackedScene" uid="uid://bvymlk3yebgbd" path="res://scenes/boar.tscn" id="6_tefeu"]
-[ext_resource type="PackedScene" uid="uid://b1q57e5hai2t" path="res://scenes/Room.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://b1q57e5hai2t" path="res://scenes/Room1.tscn" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://cr3yv7yphrbt2" path="res://scenes/goblin1.tscn" id="8_tipki"]
 [ext_resource type="PackedScene" uid="uid://bxwau1xxs4ld1" path="res://scenes/Jefe_final.tscn" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://dgrlx0435gwhy" path="res://scenes/Room2.tscn" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://chygldge7evyt" path="res://scenes/Room3.tscn" id="11_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://dt0c8lfcamcng" path="res://scenes/Room4.tscn" id="12_eb6dy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tipki"]
 texture = ExtResource("1_o6xl0")
@@ -279,10 +282,31 @@ target = NodePath("../Player")
 max_speed = 5
 
 [node name="Room" parent="." groups=["player"] instance=ExtResource("7_o6xl0")]
-position = Vector2(593, 27)
+position = Vector2(601, 47)
 
 [node name="goblin1" parent="." instance=ExtResource("8_tipki")]
 position = Vector2(235, 40)
 
 [node name="JefeFinal" parent="." instance=ExtResource("9_85g3d")]
 position = Vector2(1831, -942)
+
+[node name="Room1" parent="." instance=ExtResource("10_choun")]
+position = Vector2(-112, 574)
+
+[node name="Room2" parent="." groups=["player"] instance=ExtResource("7_o6xl0")]
+position = Vector2(621, -513)
+
+[node name="Room3" parent="." instance=ExtResource("11_ya4ey")]
+position = Vector2(1140, 491)
+
+[node name="Room4" parent="." instance=ExtResource("12_eb6dy")]
+position = Vector2(1705, 62)
+
+[node name="Room5" parent="." instance=ExtResource("12_eb6dy")]
+position = Vector2(1134, 41)
+
+[node name="Room6" parent="." instance=ExtResource("10_choun")]
+position = Vector2(1089, -551)
+
+[node name="Room7" parent="." instance=ExtResource("12_eb6dy")]
+position = Vector2(16, -1154)

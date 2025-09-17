@@ -113,3 +113,8 @@ func _on_buscar_player_body_entered(body: Node2D) -> void:
 func _on_buscar_player_body_exited(body: Node2D) -> void:
 	if body == current_target:
 		current_target = null
+
+
+#------------------set player--------------"
+func set_player(player:CharacterBody2D):
+	current_target = player
