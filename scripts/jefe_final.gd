@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 @export var move_speed: float = 100.0
-@export var vida_max: int = 6
-@export var escudo_max: int = 5
+@export var vida_max: int = 100
+@export var escudo_max: int = 6
 @export var bullet_scene: PackedScene
 @export var attack_cooldown: float = 3.0
 @export var radial_bullets: int = 12
@@ -15,7 +15,7 @@ var current_target: Node2D
 var attack_timer: Timer
 var attack_index: int = 0 
 
-var vida_actual: int
+var vida_actual: int = 100
 var escudo_actual: int
 var is_facing_right: bool = true
 func _ready() -> void:
@@ -104,6 +104,25 @@ func spawn_bullet(dir: Vector2) -> void:
 	bullet.speed = bullet_speed
 	bullet.asignar_duenio("enemigo")
 	get_parent().add_child(bullet)
+
+func take_damage(dano: int) -> void:
+	if escudo_actual > 0:
+		var absorbed = min(dano, escudo_actual)
+		escudo_actual -= absorbed
+		dano -= absorbed
+	if dano > 0:
+		vida_actual -= dano
+	print(vida_actual)
+	if vida_actual <= 0:
+		morir()
+
+func morir() -> void:
+	print("¡El jefe ha sido derrotado!")
+	queue_free()
+	
+	
+	
+# ----------------detectar player--------------
 
 
 func _on_encontrar_player_body_entered(body: Node2D) -> void:

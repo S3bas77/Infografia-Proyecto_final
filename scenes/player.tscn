@@ -312,7 +312,7 @@ height = 28.0
 radius = 104.005
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a8ls1"]
-radius = 38.0526
+radius = 21.0238
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 261

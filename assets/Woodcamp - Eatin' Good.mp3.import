@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cd8rswg5vw6qn"
+path="res://.godot/imported/Woodcamp - Eatin' Good.mp3-f2582f6001311dafb778da346435a61a.mp3str"
+
+[deps]
+
+source_file="res://assets/Woodcamp - Eatin' Good.mp3"
+dest_files=["res://.godot/imported/Woodcamp - Eatin' Good.mp3-f2582f6001311dafb778da346435a61a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
