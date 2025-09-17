@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cej3d6d2r78o5"]
+
+[ext_resource type="PackedScene" uid="uid://bw7g3ebpbc254" path="res://scenes/gun.tscn" id="1_0ys2u"]
+[ext_resource type="PackedScene" uid="uid://cha5vmqcoet1l" path="res://scenes/bala_hoak.tscn" id="2_ie7ut"]
+[ext_resource type="Texture2D" uid="uid://p58o3oo2nqnf" path="res://assets/weapons/Sprite_Laser_Rain.webp" id="2_w62qt"]
+
+[node name="hoak" instance=ExtResource("1_0ys2u")]
+collision_layer = 16384
+bullet_scene = ExtResource("2_ie7ut")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 0)
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(-0.189526, 0.374049)
+rotation = -0.904181
+scale = Vector2(0.0798343, 0.0815512)
+texture = ExtResource("2_w62qt")
+
+[node name="Marker2D" parent="." index="2"]
+position = Vector2(11, -2)

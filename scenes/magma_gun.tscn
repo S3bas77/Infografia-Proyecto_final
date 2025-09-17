@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8s4fkp8s0u8j"]
+
+[ext_resource type="PackedScene" uid="uid://bw7g3ebpbc254" path="res://scenes/gun.tscn" id="1_mm0wd"]
+[ext_resource type="PackedScene" uid="uid://dm7uqxm2yo53o" path="res://scenes/fire_ball.tscn" id="2_74xuc"]
+[ext_resource type="Texture2D" uid="uid://dk7ayskc6toip" path="res://assets/weapons/Sprite_Dragon_Bros%27_Sniper_Rifle_alt.webp" id="2_lnfbl"]
+
+[node name="magma_gun" instance=ExtResource("1_mm0wd")]
+collision_layer = 16384
+bullet_scene = ExtResource("2_74xuc")
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(5, -4)
+scale = Vector2(0.121569, 0.131537)
+texture = ExtResource("2_lnfbl")
+
+[node name="Marker2D" parent="." index="2"]
+position = Vector2(18, -2)
