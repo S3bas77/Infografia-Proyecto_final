@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3riluboc6qr5"]
+
+[ext_resource type="Script" uid="uid://cjb2hren8riki" path="res://scripts/menu.gd" id="1_486ty"]
+[ext_resource type="Texture2D" uid="uid://b0skamfj3rahs" path="res://assets/weapons/screen-0.jpg" id="1_i85hu"]
+[ext_resource type="Script" uid="uid://ds82b3e48xt6a" path="res://scripts/start_button.gd" id="3_iep14"]
+[ext_resource type="FontFile" uid="uid://becepqmh8dcs1" path="res://assets/fonts/PressStart2P-Regular.ttf" id="4_486ty"]
+
+[sub_resource type="GDScript" id="GDScript_w5ui5"]
+script/source = "extends Button
+"
+
+[node name="MenuPrincipal" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_486ty")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(144, 146)
+scale = Vector2(0.191003, 0.239344)
+texture = ExtResource("1_i85hu")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="OptionsButton" type="TextureButton" parent="UI"]
+anchors_preset = -1
+anchor_bottom = 0.074
+offset_right = 40.0
+offset_bottom = 20.02
+
+[node name="start" type="Button" parent="UI"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = SubResource("GDScript_w5ui5")
+
+[node name="startButton" type="TextureButton" parent="UI/start"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_iep14")
+
+[node name="Label" type="Label" parent="UI/start/startButton"]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 192.0
+offset_right = 338.0
+offset_bottom = 256.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_486ty")
+theme_override_font_sizes/font_size = 5
+text = "Presiona para iniciar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="UI/start/startButton"]
+wait_time = 1.5
+autostart = true
+
+[connection signal="pressed" from="UI/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="UI/start/startButton" to="." method="_on_start_button_pressed"]
