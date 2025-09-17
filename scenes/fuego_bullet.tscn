@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct24wall08mhn"]
+
+[ext_resource type="PackedScene" uid="uid://7vphg3hab66t" path="res://scenes/bullet.tscn" id="1_pu3lt"]
+[ext_resource type="Texture2D" uid="uid://dnpof56dvnnkm" path="res://assets/weapons/bola_de_fuego2-removebg-preview.png" id="2_ove2n"]
+
+[node name="Bullet" instance=ExtResource("1_pu3lt")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(-4, 0)
+scale = Vector2(0.0678577, 0.0661537)
+texture = ExtResource("2_ove2n")
