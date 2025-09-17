@@ -45,3 +45,4 @@ func die() -> void:
 #------------------set player--------------"
 func set_player(player:CharacterBody2D):
 	target = player
+

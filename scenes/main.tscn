@@ -1,4 +1,3 @@
-
 [gd_scene load_steps=45 format=4 uid="uid://clkgbqkhsny3n"]
 
 
@@ -294,6 +293,7 @@ position = Vector2(601, 47)
 [node name="goblin1" parent="." instance=ExtResource("8_tipki")]
 position = Vector2(235, 40)
 
+
 [node name="JefeFinal" parent="." instance=ExtResource("9_85g3d")]
 position = Vector2(1831, -942)
 
@@ -317,6 +317,7 @@ position = Vector2(1089, -551)
 
 [node name="Room7" parent="." instance=ExtResource("12_eb6dy")]
 position = Vector2(16, -1154)
+
 
 [node name="ametralladora" parent="." instance=ExtResource("13_ak46")]
 visibility_layer = 1
