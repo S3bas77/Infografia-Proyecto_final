@@ -312,7 +312,8 @@ height = 28.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_oprun"]
 radius = 104.005
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 261
 script = ExtResource("1_g2els")
 move_speed = 60.0
 
