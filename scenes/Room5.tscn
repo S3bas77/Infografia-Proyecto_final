@@ -1,25 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1q57e5hai2t"]
+[gd_scene load_steps=5 format=3 uid="uid://bsa7m46w3n8lp"]
 
-[ext_resource type="Script" uid="uid://hts1rixbefgi" path="res://scripts/room.gd" id="1_llheb"]
+[ext_resource type="Script" uid="uid://hts1rixbefgi" path="res://scripts/room.gd" id="1_ptl5m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um1ds"]
-size = Vector2(289.5, 287)
+size = Vector2(445.75, 287)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmfkn"]
-size = Vector2(236, 219.5)
+size = Vector2(391, 219.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dtu0"]
-size = Vector2(197, 181)
+size = Vector2(342, 181)
 
-[node name="Room1" type="Node2D"]
-script = ExtResource("1_llheb")
+[node name="Room5" type="Node2D"]
+script = ExtResource("1_ptl5m")
 
 [node name="BuscarPuertas" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuscarPuertas"]
-position = Vector2(117, 110)
+position = Vector2(195.125, 110)
 shape = SubResource("RectangleShape2D_um1ds")
 debug_color = Color(0.996883, 0, 0.17779, 0.42)
 
@@ -28,7 +28,7 @@ collision_layer = 0
 collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(117, 108.25)
+position = Vector2(194.5, 108.25)
 shape = SubResource("RectangleShape2D_xmfkn")
 
 [node name="EnemiesSpawn" type="Node2D" parent="."]
@@ -52,7 +52,7 @@ collision_layer = 0
 collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2(117.5, 108.5)
+position = Vector2(190, 108.5)
 shape = SubResource("RectangleShape2D_2dtu0")
 
 [connection signal="area_shape_entered" from="BuscarPuertas" to="." method="_on_buscar_puertas_area_shape_entered"]

@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=4 uid="uid://7pdqotcadtv3"]
+
+[ext_resource type="Texture2D" uid="uid://b6newluws35sy" path="res://assets/floor/floor_elementos.png" id="1_fahd1"]
+[ext_resource type="Script" uid="uid://d1xpb816ldt1k" path="res://scripts/area_2d.gd" id="2_m1oky"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m1oky"]
+texture = ExtResource("1_fahd1")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+0:1/0 = 0
+5:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_hwnar"]
+sources/0 = SubResource("TileSetAtlasSource_m1oky")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yci12"]
+size = Vector2(16, 92)
+
+[node name="PuertaVertical" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD///3/AAADAAAAAAD///7/AAADAAAAAAD/////AAADAAAAAAD//wAAAAADAAAAAAD//wEAAAADAAAAAAD//wIAAAAEAAAAAAA=")
+tile_set = SubResource("TileSet_hwnar")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("2_m1oky")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-9, 2)
+shape = SubResource("RectangleShape2D_yci12")
